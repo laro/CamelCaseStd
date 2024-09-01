@@ -17,6 +17,7 @@ namespace cilia {
     using UInt64 = uint64_t;
 
     using Bool = bool;
+    using Byte = uint8_t;
     using Char = unsigned char;
 
     using Float    = float;
