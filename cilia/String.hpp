@@ -1,5 +1,5 @@
 #include <string>
-#include <cilia/Types.hpp>
+#include <cilia/BasicTypes.hpp>
 
 namespace cilia {
 
