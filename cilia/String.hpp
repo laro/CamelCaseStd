@@ -5,13 +5,13 @@ namespace cilia {
 
     class String : public std::string {
     public:
-        using ValueType     = std::string::value_type;
-        using TraitsType    = std::string::traits_type;
-        using AllocatorType = std::string::allocator_type;
-        using Reference      = std::string::reference;
-        using ConstReference = std::string::const_reference;
-        using Pointer        = std::string::pointer;
-        using ConstPointer   = std::string::const_pointer;
+        using ValueType            = std::string::value_type;
+        using TraitsType           = std::string::traits_type;
+        using AllocatorType        = std::string::allocator_type;
+        using Reference            = std::string::reference;
+        using ConstReference       = std::string::const_reference;
+        using Pointer              = std::string::pointer;
+        using ConstPointer         = std::string::const_pointer;
         using Iterator             = std::string::iterator;
         using ConstIterator        = std::string::const_iterator;
         using ReverseIterator      = std::string::reverse_iterator;
