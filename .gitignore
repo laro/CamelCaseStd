@@ -2,9 +2,5 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/CamelCaseStd/CopilotIndices/0.2.1634.3922
-/.vs/CamelCaseStd/FileContentIndex
-/.vs/CamelCaseStd/v14
-/.vs/CamelCaseStd/v17
-/Build/x64/Debug
+/Build/
 /.vs
