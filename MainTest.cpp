@@ -13,7 +13,7 @@ auto printLineStd(const std::string& str) {
     cout << str << endl;
 }
 
-int main() {
+auto main() -> Int {
     String      strCil = "TestCil";
     std::string strStd = "TestStd";
 
