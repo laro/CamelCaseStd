@@ -1,18 +1,18 @@
 #pragma once
 #include <cstdint>
 #include <cstddef>  // nullptr_t
-//#include <stdfloat> // std::float16_t, std::bfloat16_t
+//#include <stdfloat> // std::float16_t, std::bfloat16_t, but C++23
 #include <limits>
 
 namespace cilia {
 
-	//TODO #if 64 bit
+#if defined(_WIN64) || defined(__x86_64__) || defined(__aarch64__) // MSVC and GCC defines to signal 64 bit systems
 	using Int  = int64_t;
 	using UInt = uint64_t;
-	//TODO #else
-	//using Int = int32_t;
-	//using UInt = uint32_t;
-	//TODO #endif
+#else
+	using Int  = int32_t;
+	using UInt = uint32_t;
+#endif
 
 	using Int8  = int8_t;
 	using Int16 = int16_t;

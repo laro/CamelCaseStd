@@ -8,8 +8,8 @@ namespace cilia {
 	class Array : public std::vector<T, Allocator> {
 	public:
 		using ValueType            = std::vector<T, Allocator>::value_type;
-		using TraitsType           = std::vector<T, Allocator>::traits_type;
 		using AllocatorType        = std::vector<T, Allocator>::allocator_type;
+		using SizeType             = std::vector<T, Allocator>::size_type;
 		using Reference            = std::vector<T, Allocator>::reference;
 		using ConstReference       = std::vector<T, Allocator>::const_reference;
 		using Pointer              = std::vector<T, Allocator>::pointer;
@@ -25,12 +25,32 @@ namespace cilia {
 		// Allow functions with an Array parameter to also take std::vector.
 		//TODO This should be a noop conversion, but currently it probably is creating a copy.
 		Array(const std::vector<T, Allocator>& vec) : std::vector<T, Allocator>(vec) { }
+		Array(std::vector<T, Allocator>&& vec) : std::vector<T, Allocator>(vec) { }
 
 		auto pushBack(const T& element) {
 			std::vector<T, Allocator>::push_back(element);
 		}
+		auto pushBack(T&& element) {
+			std::vector<T, Allocator>::push_back(element);
+		}
 
-		auto operator [](Int i) -> T& {
+		auto popBack() {
+			std::vector<T, Allocator>::pop_back();
+		}
+
+		template<class... Args>
+		auto emplaceBack(Args&&... args) -> Reference {
+			return std::vector<T, Allocator>::emplace_back(args...);
+		}
+
+		auto operator [](Int i) -> Reference {
+			// Bounds check
+			if (i < 0 || i >= this->size())
+				std::terminate();
+
+			return std::vector<T, Allocator>::operator[](i);
+		}
+		auto operator [](Int i) const -> ConstReference {
 			// Bounds check
 			if (i < 0 || i >= this->size())
 				std::terminate();
@@ -38,9 +58,45 @@ namespace cilia {
 			return std::vector<T, Allocator>::operator[](i);
 		}
 
+		using std::vector<T, Allocator>::assign;
+		template<typename R> //TODO Auf Ranges beschränken
+		constexpr void assign(R&& range) {
+			std::vector<T, Allocator>::assign_range(range);
+		}
+
+		using std::vector<T, Allocator>::insert;
+		template<typename R> //TODO Auf Ranges beschränken
+		constexpr void insert(ConstIterator pos, R&& range) {
+			std::vector<T, Allocator>::insert_range(pos, range);
+		}
+
+		auto maxSize() const noexcept -> Int {
+			return max_size();
+		}
+
+		auto shrinkToFit() {
+			shrink_to_fit();
+		}
+
+		auto getAllocator() const noexcept -> AllocatorType {
+			return std::vector<T, Allocator>::get_allocator();
+		}
+
+		//TODO Kennt VS 17.11 wohl noch gar nicht
+		//template<typename T, typename Allocator, typename Pred>
+		//constexpr auto eraseIf(Array<T, Allocator>& arr, Pred pred) -> Array<T, Allocator>::SizeType {
+		//	return std::vector<T, Allocator>::erase_if(arr, pred);
+		//}
+
 	private:
-		// Hide the original snake_case functions
+		// Hide the original snake_case names
 		using std::vector<T, Allocator>::push_back;
+		using std::vector<T, Allocator>::pop_back;
+		using std::vector<T, Allocator>::emplace_back;
+		using std::vector<T, Allocator>::max_size;
+		using std::vector<T, Allocator>::shrink_to_fit;
+		using std::vector<T, Allocator>::get_allocator;
+		//using std::vector<T, Allocator>::erase_if;
 	};
 
 }

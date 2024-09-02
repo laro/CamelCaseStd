@@ -24,14 +24,91 @@ namespace cilia {
 		// Allow functions with a String parameter to also take std::string.
 		//TODO This should be a noop conversion, but currently it probably is creating a copy.
 		String(const std::string& str) : std::string(str) { }
+		String(std::string&& str) : std::string(str) { }
 
-		auto findFirstOf(const String& str, Int pos) const noexcept -> Int {
+
+		auto findFirstOf(const String& str, Int pos = 0) const noexcept -> Int {
 			return Int(std::string::find_first_of(str, pos));
 		}
+		auto findFirstOf(const char* str, Int pos = 0) const -> Int {
+			return Int(std::string::find_first_of(str, pos));
+		}
+		auto findFirstOf(const char* str, Int pos, Int n) const -> Int {
+			return Int(std::string::find_first_of(str, pos, n));
+		}
+		auto findFirstOf(char c, Int pos = 0) const -> Int {
+			return Int(std::string::find_first_of(c, pos));
+		}
+
+		auto findLastOf(const String& str, Int pos = NPos) const noexcept -> Int {
+			return Int(std::string::find_last_of(str, pos));
+		}
+		auto findLastOf(const char* str, Int pos = NPos) const -> Int {
+			return Int(std::string::find_last_of(str, pos));
+		}
+		auto findLastOf(const char* str, Int pos, Int n) const -> Int {
+			return Int(std::string::find_last_of(str, pos, n));
+		}
+		auto findLastOf(char c, Int pos = NPos) const -> Int {
+			return Int(std::string::find_last_of(c, pos));
+		}
+
+		auto findFirstNotOf(const String& str, Int pos = 0) const noexcept -> Int {
+			return Int(std::string::find_first_not_of(str, pos));
+		}
+		auto findFirstNotOf(const char* str, Int pos = 0) const -> Int {
+			return Int(std::string::find_first_not_of(str, pos));
+		}
+		auto findFirstNotOf(const char* str, Int pos, Int n) const -> Int {
+			return Int(std::string::find_first_not_of(str, pos, n));
+		}
+		auto findFirstNotOf(char c, Int pos = 0) const -> Int {
+			return Int(std::string::find_first_not_of(c, pos));
+		}
+
+		auto findLastNotOf(const String& str, Int pos = NPos) const noexcept -> Int {
+			return Int(std::string::find_last_not_of(str, pos));
+		}
+		auto findLastNotOf(const char* str, Int pos = NPos) const -> Int {
+			return Int(std::string::find_last_not_of(str, pos));
+		}
+		auto findLastNotOf(const char* str, Int pos, Int n) const -> Int {
+			return Int(std::string::find_last_not_of(str, pos, n));
+		}
+		auto findLastNotOf(char c, Int pos = NPos) const -> Int {
+			return Int(std::string::find_last_not_of(c, pos));
+		}
+
+		auto maxSize() const noexcept -> Int {
+			return max_size();
+		}
+
+		auto shrinkToFit() {
+			shrink_to_fit();
+		}
+
+		auto popBack() {
+			pop_back();
+		}
+
+		auto getAllocator() const noexcept -> AllocatorType {
+			return get_allocator();
+		}
+
+		static const Int NPos = -1;
+
 
 	private:
-		// Hide the original snake_case functions
+		// Hide the original snake_case names
 		using std::string::find_first_of;
+		using std::string::find_last_of;
+		using std::string::find_first_not_of;
+		using std::string::find_last_not_of;
+		using std::string::max_size;
+		using std::string::shrink_to_fit;
+		using std::string::pop_back;
+		using std::string::get_allocator;
+		using std::string::npos;
 	};
 
 }
