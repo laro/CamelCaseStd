@@ -32,5 +32,8 @@
     <ClInclude Include="cilia\Vector.hpp">
       <Filter>Header Files\cilia</Filter>
     </ClInclude>
+    <ClInclude Include="cilia\Macros.h">
+      <Filter>Header Files\cilia</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
