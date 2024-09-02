@@ -19,6 +19,8 @@ namespace cilia {
 
         // Take over all constructors
         using std::string::string;
+
+        // Allow functions with a String parameter to also take std::string.
         //TODO This should be a noop conversion, but currently it probably is creating a copy.
         auto String(const std::string& str) : std::string(str) { }
 
