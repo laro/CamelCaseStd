@@ -18,7 +18,7 @@ namespace cilia {
         using ReverseIterator      = std::vector<T, Allocator>::reverse_iterator;
         using ConstReverseIterator = std::vector<T, Allocator>::const_reverse_iterator;
 
-        // Zake over all construktors
+        // Take over all construktors
         using std::vector<T, Allocator>::vector;
 
         auto pushBack(const T& element) {
