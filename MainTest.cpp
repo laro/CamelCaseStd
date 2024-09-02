@@ -3,11 +3,13 @@
 
 namespace cilia {
     auto printLineCil(const String& str) {
-        std::cout << str << std::endl;
+        using namespace std;
+        cout << str << endl;
     }
     
     auto printLineStd(const std::string& str) {
-        std::cout << str << std::endl;
+        using namespace std;
+        cout << str << endl;
     }
 }
 
