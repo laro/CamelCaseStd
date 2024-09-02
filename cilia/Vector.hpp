@@ -20,6 +20,9 @@ namespace cilia {
 
         // Take over all construktors
         using std::vector<T, Allocator>::vector;
+        // Allow functions with an Array parameter to also take std::vector.
+        //TODO This should be a noop conversion, but currently it probably is creating a copy.
+        auto String(const std::vector<T, Allocator>:& vec) : std::vector<T, Allocator>(vec) { }
 
         auto pushBack(const T& element) {
             std::vector<T, Allocator>::push_back(element);
