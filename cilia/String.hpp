@@ -17,8 +17,9 @@ namespace cilia {
         using ReverseIterator      = std::string::reverse_iterator;
         using ConstReverseIterator = std::string::const_reverse_iterator;
 
-        // Take over all construktors
+        // Take over all constructors
         using std::string::string;
+        //TODO This should be a noop conversion, but currently it probably is creating a copy.
         auto String(const std::string& str) : std::string(str) { }
 
         auto findFirstOf(const String& str, Int pos) const noexcept -> Int {
