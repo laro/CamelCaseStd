@@ -17,6 +17,7 @@ namespace cilia {
         using ReverseIterator      = std::string::reverse_iterator;
         using ConstReverseIterator = std::string::const_reverse_iterator;
 
+        // Take over all construktors
         using std::string::string;
         auto String(const std::string& str) : std::string(str) { }
 
