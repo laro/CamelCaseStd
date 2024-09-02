@@ -157,6 +157,7 @@
     <ClInclude Include="cilia\BasicTypes.hpp" />
     <ClInclude Include="cilia\Macros.h" />
     <ClInclude Include="cilia\String.hpp" />
+    <ClInclude Include="cilia\StringView.hpp" />
     <ClInclude Include="cilia\Vector.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

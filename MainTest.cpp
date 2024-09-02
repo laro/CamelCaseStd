@@ -1,4 +1,5 @@
 #include <cilia/String.hpp>
+#include <cilia/StringView.hpp>
 #include <cilia/Vector.hpp>
 #include <iostream>
 
@@ -14,6 +15,16 @@ auto printLine(const String& str) {
 //	cout << str << endl;
 //}
 
+auto checkStringView(StringView str) {
+	using namespace std;
+	cout << str << endl;
+
+	Bool b1 = str.startsWith("Test");
+	Bool b2 = str.endsWith("Test");
+	str.removePrefix(1);
+	str.removeSuffix(1);
+}
+
 auto main() -> Int32 {
 	String      str    = "Test";
 	std::string strStd = "TestStd";
@@ -22,6 +33,7 @@ auto main() -> Int32 {
 	printLine(strStd);
 	//printLineStd(str);
 	//printLineStd(strStd);
+	checkStringView(str);
 
 	Int i1 = str.findFirstOf("Tt");
 	Int i2 = str.findFirstOf("Tt", i1 + 1);
@@ -45,6 +57,8 @@ auto main() -> Int32 {
 	str.popBack();
 	str.shrinkToFit();
 	auto allocator = str.getAllocator();
+
+	checkStringView(str);
 
 
 	Float flt1 = NaN;
