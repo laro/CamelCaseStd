@@ -25,6 +25,9 @@ namespace cilia {
 		//TODO This should be a noop conversion, but currently it probably is creating a copy.
 		String(const std::string& str) : std::string(str) { }
 		String(std::string&& str) : std::string(str) { }
+		//TODO Unfortunately there is no way to define an external conversion operator.
+		//     We would need to add this to std::string (which is not possible):
+		//       operator String() { return *(String*)(this); }
 
 
 		auto findFirstOf(const String& str, Int pos = 0) const noexcept -> Int {
