@@ -64,6 +64,11 @@ namespace cilia {
 			std::vector<T, Allocator>::assign_range(range);
 		}
 
+		template<typename R> //TODO Auf Ranges beschränken
+		constexpr void append(R&& range) {
+			std::vector<T, Allocator>::append_range(range);
+		}
+
 		using std::vector<T, Allocator>::insert;
 		template<typename R> //TODO Auf Ranges beschränken
 		constexpr void insert(ConstIterator pos, R&& range) {
@@ -90,6 +95,8 @@ namespace cilia {
 
 	private:
 		// Hide the original snake_case names
+		using std::vector<T, Allocator>::append_range;
+		using std::vector<T, Allocator>::insert_range;
 		using std::vector<T, Allocator>::push_back;
 		using std::vector<T, Allocator>::pop_back;
 		using std::vector<T, Allocator>::emplace_back;

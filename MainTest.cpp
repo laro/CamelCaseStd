@@ -41,6 +41,7 @@ auto main() -> Int32 {
 
 
 	Int maxSize = str.maxSize();
+	str.pushBack('X');
 	str.popBack();
 	str.shrinkToFit();
 	auto allocator = str.getAllocator();
@@ -55,6 +56,8 @@ auto main() -> Int32 {
 
 	Array<Int> arr1 { 0, 1, 2, 3 };
 	Array<Int> arr2 { 4, 5, 6, 7 };
+	arr1.append(arr2);
+	arr1.insert(arr1.begin() + 4, arr2);
 	arr1.assign(arr2);
 	arr1.pushBack(8);
 	arr1.popBack();

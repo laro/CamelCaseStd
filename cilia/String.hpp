@@ -87,6 +87,10 @@ namespace cilia {
 			shrink_to_fit();
 		}
 
+		auto pushBack(Char c) {
+			push_back(c);
+		}
+
 		auto popBack() {
 			pop_back();
 		}
@@ -106,6 +110,7 @@ namespace cilia {
 		using std::string::find_last_not_of;
 		using std::string::max_size;
 		using std::string::shrink_to_fit;
+		using std::string::push_back;
 		using std::string::pop_back;
 		using std::string::get_allocator;
 		using std::string::npos;
