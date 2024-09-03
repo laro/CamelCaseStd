@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
-#include <cilia/BasicTypes.hpp>
+#include <exception> // terminate()
+#include "cilia/BasicTypes.hpp"
 
 namespace cilia {
 
