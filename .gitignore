@@ -5,3 +5,5 @@
 /Build/
 /.vs
 *.xcworkspace
+.DS_Store
+UserInterfaceState.xcuserstate
