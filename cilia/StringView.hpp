@@ -25,7 +25,7 @@ namespace cilia {
 		//     Didn't have string_view a "ctach all" constructor for nearly everything?
 		StringView(const String& str) : std::string_view(str) { }
 		StringView(String&& str) : std::string_view(str) { }
-		//TODO This should be a noop conversion, but currently it probably is creating a copy.
+		//TODO This should be a NoOp conversion, but currently it probably is creating a copy.
 		StringView(const std::string_view& str) : std::string_view(str) { }
 		StringView(std::string_view&& str) : std::string_view(str) { }
 		//TODO Unfortunately there is no way to define an external conversion operator.

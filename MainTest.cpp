@@ -1,6 +1,7 @@
 #include "cilia/String.hpp"
 #include "cilia/StringView.hpp"
-#include "cilia/Vector.hpp"
+#include "cilia/Array.hpp"
+#include "cilia/Map.hpp"
 #include <iostream>
 
 using namespace cilia;
@@ -79,6 +80,9 @@ auto main() -> Int32 {
 	arr1.shrinkToFit();
 	Int maxSizeVec = arr1.maxSize();
 	auto allocatorVec = arr1.getAllocator();
+
+
+	Map<String, Int> map1;// { 0, 1, 2, 3 };
 
 
 	return 0;

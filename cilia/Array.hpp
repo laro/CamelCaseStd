@@ -24,7 +24,7 @@ namespace cilia {
 		using std::vector<T, Allocator>::vector;
 
 		// Allow functions with an Array parameter to also take std::vector.
-		//TODO This should be a noop conversion, but currently it probably is creating a copy.
+		//TODO This should be a NoOp conversion, but currently it probably is creating a copy.
 		Array(const std::vector<T, Allocator>& vec) : std::vector<T, Allocator>(vec) { }
 		Array(std::vector<T, Allocator>&& vec) : std::vector<T, Allocator>(vec) { }
 

@@ -29,13 +29,16 @@
     <ClInclude Include="cilia\String.hpp">
       <Filter>Header Files\cilia</Filter>
     </ClInclude>
-    <ClInclude Include="cilia\Vector.hpp">
+    <ClInclude Include="cilia\Array.hpp">
       <Filter>Header Files\cilia</Filter>
     </ClInclude>
     <ClInclude Include="cilia\Macros.h">
       <Filter>Header Files\cilia</Filter>
     </ClInclude>
     <ClInclude Include="cilia\StringView.hpp">
+      <Filter>Header Files\cilia</Filter>
+    </ClInclude>
+    <ClInclude Include="cilia\Map.hpp">
       <Filter>Header Files\cilia</Filter>
     </ClInclude>
   </ItemGroup>
