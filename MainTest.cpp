@@ -82,8 +82,31 @@ auto main() -> Int32 {
 	auto allocatorVec = arr1.getAllocator();
 
 
-	Map<String, Int> map1;// { 0, 1, 2, 3 };
+    class ContactInfo {
+    public:
+        String firstName;
+        String familyName;
+        String phone;
+    };
+	Map<String, ContactInfo> map1;
+    map1["A"] = ContactInfo("Sean", "Connery", "0123456789");
+    //map1["A"] = ContactInfo { .firstName = "Sean", .familyName="Connery", .phone="0123456789" };
+    map1["B"] = ContactInfo("Roger", "Moore", "012345678");
+    Map<String, ContactInfo> map2;
+    map2["C"] = ContactInfo("Pierce", "Brosnan", "01234567");
+    map2["D"] = ContactInfo("Daniel");
+    Bool containsD1 = map2.contains("D");
+    map2["D"] = ContactInfo("Daniel", "Craig");
+    map2["D"] = ContactInfo("Daniel", "Craig", "012345");
+    Bool containsD2 = map2.contains("D");
+    map1.insert(map2);
+    map1.insertOrAssign("D", ContactInfo("Daniel", "Craig", "0123456"));
+    map1.insertOrAssign("E", ContactInfo("Timothy", "Dalton", "012345"));
+    auto lowerBound = map1.lowerBound("B");
+    auto upperBound = map1.upperBound("B");
+    auto keyComparer = map1.keyComp();
+    auto valueComparer = map1.valueComp();
 
-
+    
 	return 0;
 }
