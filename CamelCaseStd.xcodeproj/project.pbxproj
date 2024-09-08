@@ -27,10 +27,11 @@
 		4816A2D82C86E2A000A52971 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		4816A2D92C86E2A000A52971 /* String.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = String.hpp; sourceTree = "<group>"; };
 		4816A2DA2C86E2A000A52971 /* StringView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StringView.hpp; sourceTree = "<group>"; };
-		4816A2DB2C86E2A000A52971 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Vector.hpp; sourceTree = "<group>"; };
 		4816A2DD2C86E2AA00A52971 /* MainTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainTest.cpp; sourceTree = SOURCE_ROOT; };
 		4816A2DE2C86E2AA00A52971 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		48745EAE2C86E24300239F7E /* CamelCaseStd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CamelCaseStd; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B1C1462C8E16350051BCF5 /* Array.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Array.hpp; sourceTree = "<group>"; };
+		48B1C1472C8E16350051BCF5 /* Map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,11 +48,12 @@
 		4816A2DC2C86E2A000A52971 /* cilia */ = {
 			isa = PBXGroup;
 			children = (
+				48B1C1462C8E16350051BCF5 /* Array.hpp */,
+				48B1C1472C8E16350051BCF5 /* Map.hpp */,
 				4816A2D72C86E2A000A52971 /* BasicTypes.hpp */,
 				4816A2D82C86E2A000A52971 /* Macros.h */,
 				4816A2D92C86E2A000A52971 /* String.hpp */,
 				4816A2DA2C86E2A000A52971 /* StringView.hpp */,
-				4816A2DB2C86E2A000A52971 /* Vector.hpp */,
 			);
 			path = cilia;
 			sourceTree = "<group>";
