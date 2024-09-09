@@ -1,4 +1,5 @@
 #include "cilia/String.hpp"
+#include "cilia/String2.hpp"
 #include "cilia/StringView.hpp"
 #include "cilia/Array.hpp"
 #include "cilia/Map.hpp"
@@ -6,15 +7,21 @@
 
 using namespace cilia;
 
+
 auto printLine(const String& str) {
 	using namespace std;
 	cout << str << endl;
 }
 
-//auto printLineStd(const std::string& str) {
-//	using namespace std;
-//	cout << str << endl;
-//}
+auto printLineStd(const std::string& str) {
+	using namespace std;
+	cout << str << endl;
+}
+
+auto printLineString2(const String2& str) {
+	using namespace std;
+	cout << str << endl;
+}
 
 auto checkStringView(StringView str) {
 	using namespace std;
@@ -26,15 +33,20 @@ auto checkStringView(StringView str) {
 	str.removeSuffix(1);
 }
 
+auto append(String2& str, char ch) {
+	str.pushBack(ch);
+}
+
 auto main() -> Int32 {
-	String      str    = "Test";
-	std::string strStd = "TestStd";
+	String       str      = "Test";
+	const String strConst = "TestConst";
+	std::string  strStd   = "TestStd";
 
 	printLine(str);
 	printLine(strStd);
-	//printLineStd(str);
-	//printLineStd(strStd);
+	printLineStd(str);
 	checkStringView(str);
+
 
 	Int i1 = str.findFirstOf("Tt");
 	Int i2 = str.findFirstOf("Tt", i1 + 1);
@@ -59,7 +71,15 @@ auto main() -> Int32 {
 	str.shrinkToFit();
 	auto allocator = str.getAllocator();
 
-	checkStringView(str);
+
+	printLineString2(str);
+	printLineString2(strConst);
+	append(str, 'X');
+	String2 str2 = "Test2";
+	printLine(str2);
+	printLineStd(str2);
+	checkStringView(str2);
+
 
 
 	Float flt1 = NaN;
@@ -82,31 +102,34 @@ auto main() -> Int32 {
 	auto allocatorVec = arr1.getAllocator();
 
 
-    class ContactInfo {
-    public:
-        String firstName;
-        String familyName;
-        String phone;
-    };
+	class ContactInfo {
+	public:
+		String firstName;
+		String familyName;
+		String phone;
+	};
 	Map<String, ContactInfo> map1;
-    map1["A"] = ContactInfo("Sean", "Connery", "0123456789");
-    //map1["A"] = ContactInfo { .firstName = "Sean", .familyName="Connery", .phone="0123456789" };
-    map1["B"] = ContactInfo("Roger", "Moore", "012345678");
-    Map<String, ContactInfo> map2;
-    map2["C"] = ContactInfo("Pierce", "Brosnan", "01234567");
-    map2["D"] = ContactInfo("Daniel");
-    Bool containsD1 = map2.contains("D");
-    map2["D"] = ContactInfo("Daniel", "Craig");
-    map2["D"] = ContactInfo("Daniel", "Craig", "012345");
-    Bool containsD2 = map2.contains("D");
-    map1.insert(map2);
-    map1.insertOrAssign("D", ContactInfo("Daniel", "Craig", "0123456"));
-    map1.insertOrAssign("E", ContactInfo("Timothy", "Dalton", "012345"));
-    auto lowerBound = map1.lowerBound("B");
-    auto upperBound = map1.upperBound("B");
-    auto keyComparer = map1.keyComp();
-    auto valueComparer = map1.valueComp();
+	map1["A"] = ContactInfo("Sean", "Connery", "0123456789");
+	//map1["A"] = ContactInfo { .firstName = "Sean", .familyName="Connery", .phone="0123456789" };
+	map1["B"] = ContactInfo("Roger", "Moore", "012345678");
+	Map<String, ContactInfo> map2;
+	map2["C"] = ContactInfo("Pierce", "Brosnan", "01234567");
+	Bool containsD1 = map2.contains("D");
+	map2["D"] = ContactInfo("Daniel");
+	map2["D"] = ContactInfo("Daniel", "Craig");
+	map2["D"] = ContactInfo("Daniel", "Craig", "012345");
+	Bool containsD2 = map2.contains("D");
 
-    
+	map1.insert(map2);
+	map1.insertOrAssign("D", ContactInfo("Daniel", "Craig", "0123456"));
+	map1.insertOrAssign("E", ContactInfo("Timothy", "Dalton", "012345"));
+
+	auto lowerBound = map1.lowerBound("B");
+	auto upperBound = map1.upperBound("B");
+
+	auto keyComparer   = map1.keyComp();
+	auto valueComparer = map1.valueComp();
+
+
 	return 0;
 }
