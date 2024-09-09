@@ -28,17 +28,16 @@ namespace cilia {
 		String(std::string&& str) : std::string(str) { }
 		//TODO Unfortunately there is no way to define an external conversion operator.
 		//     We would need to add this to std::string (which is not possible):
-		//       operator String() { return *(String*)(this); }
+		//       operator String&() { return *reinterpret_cast<const String*>(this); }
 
 		// NoOp casting from String to String2
-		// Unfortunately we need to define it here, in String.
-		// AFAIK there currently is no way to define it in String2.
-		operator String2();
-		// Even more unfortunate is, that we need to declare it here, but need to define
-		// it in String.cpp or so.
-		//operator String2() {
-		//	return *reinterpret_cast<String2*>(this);
-		//}
+		// Unfortunately we need to define it here, in String. AFAIK it is not possible to define it in String2.
+		operator String2&() {
+			return *reinterpret_cast<String2*>(this);
+		}
+		operator const String2& () const {
+			return *reinterpret_cast<const String2*>(this);
+		}
 
 
 		auto findFirstOf(const String& str, Int pos = 0) const noexcept -> Int {
