@@ -2,7 +2,7 @@
 #include <map>
 #include <exception> // terminate()
 #include "cilia/BasicTypes.hpp"
-#include "cilia/Pair.hpp" //TODO utility
+#include "cilia/Pair.hpp" //TODO "cilia/utility.hpp"
 
 namespace cilia {
 
@@ -20,7 +20,7 @@ namespace cilia {
 		using AllocatorType        = std::map<Key, T, Compare, Allocator>::allocator_type;
 		using SizeType             = std::map<Key, T, Compare, Allocator>::size_type;
 		using KeyCompare           = std::map<Key, T, Compare, Allocator>::key_compare;
-        using ValueCompare         = std::map<Key, T, Compare, Allocator>::value_compare;
+		using ValueCompare         = std::map<Key, T, Compare, Allocator>::value_compare;
 		using Reference            = std::map<Key, T, Compare, Allocator>::reference;
 		using ConstReference       = std::map<Key, T, Compare, Allocator>::const_reference;
 		using Pointer              = std::map<Key, T, Compare, Allocator>::pointer;
@@ -48,11 +48,11 @@ namespace cilia {
 
 		template<typename M>
 		constexpr auto insertOrAssign(const Key& key, M&& obj) -> Pair<Iterator, Bool> {
-            return std::map<Key, T, Compare, Allocator>::insert_or_assign(key, obj);
+			return std::map<Key, T, Compare, Allocator>::insert_or_assign(key, obj);
 		}
 		template<typename M>
 		constexpr auto insertOrAssign(Key&& key, M&& obj) -> Pair<Iterator, Bool> {
-            return std::map<Key, T, Compare, Allocator>::insert_or_assign(key, obj);
+			return std::map<Key, T, Compare, Allocator>::insert_or_assign(key, obj);
 		}
 		template<typename K, typename M>
 		constexpr auto insertOrAssign(K&& key, M&& obj) -> Pair<Iterator, Bool> {
@@ -60,15 +60,15 @@ namespace cilia {
 		}
 		template<typename M>
 		constexpr auto insertOrAssign(ConstIterator hint, const Key& key, M&& obj) -> Iterator {
-            return std::map<Key, T, Compare, Allocator>::insert_or_assign(hint, key, obj);
+			return std::map<Key, T, Compare, Allocator>::insert_or_assign(hint, key, obj);
 		}
 		template<typename M>
 		constexpr auto insertOrAssign(ConstIterator hint, Key&& key, M&& obj) -> Iterator {
-            return std::map<Key, T, Compare, Allocator>::insert_or_assign(hint, key, obj);
+			return std::map<Key, T, Compare, Allocator>::insert_or_assign(hint, key, obj);
 		}
 		template<typename K, typename M>
 		constexpr auto insertOrAssign(ConstIterator hint, K&& key, M&& obj) -> Iterator {
-            return std::map<Key, T, Compare, Allocator>::insert_or_assign(hint, key, obj);
+			return std::map<Key, T, Compare, Allocator>::insert_or_assign(hint, key, obj);
 		}
 
 		auto maxSize() const noexcept -> Int {
@@ -84,83 +84,83 @@ namespace cilia {
 			return std::map<Key, T, Compare, Allocator>::emplace_hint(hint, std::forward<Args>(args)...);
 		}
 
-        template<typename M>
-        constexpr auto tryEmplace(const Key& key, M&& obj) -> Pair<Iterator, Bool> {
-            return std::map<Key, T, Compare, Allocator>::try_emplace(key, obj);
-        }
-        template<typename M>
-        constexpr auto tryEmplace(Key&& key, M&& obj) -> Pair<Iterator, Bool> {
-            return std::map<Key, T, Compare, Allocator>::try_emplace(key, obj);
-        }
-        template<typename K, typename M>
-        constexpr auto tryEmplace(K&& key, M&& obj) -> Pair<Iterator, Bool> {
-            return std::map<Key, T, Compare, Allocator>::try_emplace(key, obj);
-        }
-        template<typename M>
-        constexpr auto tryEmplace(ConstIterator hint, const Key& key, M&& obj) -> Pair<Iterator, Bool> {
-            return std::map<Key, T, Compare, Allocator>::try_emplace(hint, key, obj);
-        }
-        template<typename M>
-        constexpr auto tryEmplace(ConstIterator hint, Key&& key, M&& obj) -> Pair<Iterator, Bool> {
-            return std::map<Key, T, Compare, Allocator>::try_emplace(hint, key, obj);
-        }
-        template<typename K, typename M>
-        constexpr auto tryEmplace(ConstIterator hint, K&& key, M&& obj) -> Pair<Iterator, Bool> {
-            return std::map<Key, T, Compare, Allocator>::try_emplace(hint, key, obj);
-        }
-        
-        auto equal_range(const Key& key) -> Pair<Iterator, Iterator> {
-            return std::map<Key, T, Compare, Allocator>::equal_range(key);
-        }
-        auto equal_range(const Key& key) const -> Pair<ConstIterator, ConstIterator> {
-            return std::map<Key, T, Compare, Allocator>::equal_range(key);
-        }
-        template<class K>
-        auto equal_range(const K& key) -> Pair<Iterator, Iterator> {
-            return std::map<Key, T, Compare, Allocator>::equal_range(key);
-        }
-        template<class K>
-        auto equalRange(const K& key) const -> Pair<ConstIterator, ConstIterator> {
-            return std::map<Key, T, Compare, Allocator>::equal_range(key);
-        }
-        
-        auto lowerBound(const Key& key) -> Iterator {
-            return std::map<Key, T, Compare, Allocator>::lower_bound(key);
-        }
-        auto lowerBound(const Key& key) const -> ConstIterator {
-            return std::map<Key, T, Compare, Allocator>::lower_bound(key);
-        }
-        template<class K>
-        auto lowerBound(const K& key) -> Iterator {
-            return std::map<Key, T, Compare, Allocator>::lower_bound(key);
-        }
-        template<class K>
-        auto lowerBound(const K& key) const -> ConstIterator {
-            return std::map<Key, T, Compare, Allocator>::lower_bound(key);
-        }
+		template<typename M>
+		constexpr auto tryEmplace(const Key& key, M&& obj) -> Pair<Iterator, Bool> {
+			return std::map<Key, T, Compare, Allocator>::try_emplace(key, obj);
+		}
+		template<typename M>
+		constexpr auto tryEmplace(Key&& key, M&& obj) -> Pair<Iterator, Bool> {
+			return std::map<Key, T, Compare, Allocator>::try_emplace(key, obj);
+		}
+		template<typename K, typename M>
+		constexpr auto tryEmplace(K&& key, M&& obj) -> Pair<Iterator, Bool> {
+			return std::map<Key, T, Compare, Allocator>::try_emplace(key, obj);
+		}
+		template<typename M>
+		constexpr auto tryEmplace(ConstIterator hint, const Key& key, M&& obj) -> Pair<Iterator, Bool> {
+			return std::map<Key, T, Compare, Allocator>::try_emplace(hint, key, obj);
+		}
+		template<typename M>
+		constexpr auto tryEmplace(ConstIterator hint, Key&& key, M&& obj) -> Pair<Iterator, Bool> {
+			return std::map<Key, T, Compare, Allocator>::try_emplace(hint, key, obj);
+		}
+		template<typename K, typename M>
+		constexpr auto tryEmplace(ConstIterator hint, K&& key, M&& obj) -> Pair<Iterator, Bool> {
+			return std::map<Key, T, Compare, Allocator>::try_emplace(hint, key, obj);
+		}
 
-        auto upperBound(const Key& key) -> Iterator {
-            return std::map<Key, T, Compare, Allocator>::upper_bound(key);
-        }
-        auto upperBound(const Key& key) const -> ConstIterator {
-            return std::map<Key, T, Compare, Allocator>::upper_bound(key);
-        }
-        template<class K>
-        auto upperBound(const K& key) -> Iterator {
-            return std::map<Key, T, Compare, Allocator>::upper_bound(key);
-        }
-        template<class K>
-        auto upperBound(const K& key) const -> ConstIterator {
-            return std::map<Key, T, Compare, Allocator>::upper_bound(key);
-        }
-        
-        auto keyComp() const -> KeyCompare {
-            return std::map<Key, T, Compare, Allocator>::key_comp();
-        }
-        
-        auto valueComp() const -> ValueCompare {
-            return std::map<Key, T, Compare, Allocator>::value_comp();
-        }
+		auto equal_range(const Key& key) -> Pair<Iterator, Iterator> {
+			return std::map<Key, T, Compare, Allocator>::equal_range(key);
+		}
+		auto equal_range(const Key& key) const -> Pair<ConstIterator, ConstIterator> {
+			return std::map<Key, T, Compare, Allocator>::equal_range(key);
+		}
+		template<class K>
+		auto equal_range(const K& key) -> Pair<Iterator, Iterator> {
+			return std::map<Key, T, Compare, Allocator>::equal_range(key);
+		}
+		template<class K>
+		auto equalRange(const K& key) const -> Pair<ConstIterator, ConstIterator> {
+			return std::map<Key, T, Compare, Allocator>::equal_range(key);
+		}
+
+		auto lowerBound(const Key& key) -> Iterator {
+			return std::map<Key, T, Compare, Allocator>::lower_bound(key);
+		}
+		auto lowerBound(const Key& key) const -> ConstIterator {
+			return std::map<Key, T, Compare, Allocator>::lower_bound(key);
+		}
+		template<class K>
+		auto lowerBound(const K& key) -> Iterator {
+			return std::map<Key, T, Compare, Allocator>::lower_bound(key);
+		}
+		template<class K>
+		auto lowerBound(const K& key) const -> ConstIterator {
+			return std::map<Key, T, Compare, Allocator>::lower_bound(key);
+		}
+
+		auto upperBound(const Key& key) -> Iterator {
+			return std::map<Key, T, Compare, Allocator>::upper_bound(key);
+		}
+		auto upperBound(const Key& key) const -> ConstIterator {
+			return std::map<Key, T, Compare, Allocator>::upper_bound(key);
+		}
+		template<class K>
+		auto upperBound(const K& key) -> Iterator {
+			return std::map<Key, T, Compare, Allocator>::upper_bound(key);
+		}
+		template<class K>
+		auto upperBound(const K& key) const -> ConstIterator {
+			return std::map<Key, T, Compare, Allocator>::upper_bound(key);
+		}
+
+		auto keyComp() const -> KeyCompare {
+			return std::map<Key, T, Compare, Allocator>::key_comp();
+		}
+
+		auto valueComp() const -> ValueCompare {
+			return std::map<Key, T, Compare, Allocator>::value_comp();
+		}
 
 	private:
 		// Hide the original snake_case names
