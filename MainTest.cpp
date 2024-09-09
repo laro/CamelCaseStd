@@ -1,4 +1,5 @@
 #include "cilia/String.hpp"
+#include "cilia/String2.hpp"
 #include "cilia/StringView.hpp"
 #include "cilia/Array.hpp"
 #include "cilia/Map.hpp"
@@ -6,15 +7,26 @@
 
 using namespace cilia;
 
+String::operator String2() {
+	return *reinterpret_cast<String2*>(this);
+}
+
+
+
 auto printLine(const String& str) {
 	using namespace std;
 	cout << str << endl;
 }
 
-//auto printLineStd(const std::string& str) {
-//	using namespace std;
-//	cout << str << endl;
-//}
+auto printLineStd(const std::string& str) {
+	using namespace std;
+	cout << str << endl;
+}
+
+auto printLineString2(const String2& str) {
+	using namespace std;
+	cout << str << endl;
+}
 
 auto checkStringView(StringView str) {
 	using namespace std;
@@ -32,8 +44,8 @@ auto main() -> Int32 {
 
 	printLine(str);
 	printLine(strStd);
-	//printLineStd(str);
-	//printLineStd(strStd);
+	printLineStd(str);
+	printLineString2(str);
 	checkStringView(str);
 
 	Int i1 = str.findFirstOf("Tt");
@@ -60,6 +72,11 @@ auto main() -> Int32 {
 	auto allocator = str.getAllocator();
 
 	checkStringView(str);
+
+	String2 str2 = "Test2";
+	printLine(str2);
+	printLineStd(str2);
+	checkStringView(str2);
 
 
 	Float flt1 = NaN;
