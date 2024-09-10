@@ -5,6 +5,6 @@
 /Build/
 /.vs
 .DS_Store
-*.xcodeproj/project.xcworkspace
+*.xcodeproj/project.xcworkspace/
 *.xcodeproj/xcshareddata
 *.xcodeproj/xcuserdata
