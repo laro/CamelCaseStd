@@ -110,7 +110,7 @@ auto main() -> Int32 {
 	};
 	Map<String, ContactInfo> map1;
 	map1["A"] = ContactInfo("Sean", "Connery", "0123456789");
-	//map1["A"] = ContactInfo { .firstName = "Sean", .familyName="Connery", .phone="0123456789" };
+	map1["A"] = ContactInfo { .firstName = "Sean", .familyName="Connery", .phone="0123456789" };
 	map1["B"] = ContactInfo("Roger", "Moore", "012345678");
 	Map<String, ContactInfo> map2;
 	map2["C"] = ContactInfo("Pierce", "Brosnan", "01234567");
