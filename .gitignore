@@ -4,6 +4,7 @@
 
 /Build/
 /.vs
-*.xcworkspace
 .DS_Store
-UserInterfaceState.xcuserstate
+*.xcodeproj/project.xcworkspace
+*.xcodeproj/xcshareddata
+*.xcodeproj/xcuserdata
