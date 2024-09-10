@@ -23,21 +23,23 @@ namespace cilia {
 		using std::string::string;
 
 		// Allow functions with a String parameter to also take std::string.
-		//TODO This should be a NoOp conversion, but currently it probably is creating a copy.
+		// This, unfortunately, is creating a copy.
 		String(const std::string& str) : std::string(str) { }
 		String(std::string&& str) : std::string(str) { }
-		//TODO Unfortunately there is no way to define an external conversion operator.
-		//     We would need to add this to std::string (which is not possible):
-		//       operator String&() { return *reinterpret_cast<const String*>(this); }
 
 		// NoOp casting from String to String2
 		// Unfortunately we need to define it here, in String. AFAIK it is not possible to define it in String2.
+		// So for std::string we need to use constructor casting (unfortunately creating a copy), as we cannot change <string> itself.
 		operator String2&() {
 			return *reinterpret_cast<String2*>(this);
 		}
 		operator const String2& () const {
 			return *reinterpret_cast<const String2*>(this);
 		}
+		// And there is no way to define an external/global conversion operator like this:
+		//std::string::operator String& (std::string& str) {
+		//	return *reinterpret_cast<String*>(&str);
+		//}
 
 
 		auto findFirstOf(const String& str, Int pos = 0) const noexcept -> Int {
