@@ -7,7 +7,7 @@ e.g. `class cilia::String : public std::string { ... }`.
   - `Int32` instead of `int32_t`,
   - `String` instead of `string`.
 
-- Replacing snake_case function names with (lower) camelCase:  
+- Replacing lowercase / snake_case function names with (lower) camelCase:  
   `str.popBack()` instead of `str.pop_back()`.
 
 - Sometimes simplifying the interface:  
