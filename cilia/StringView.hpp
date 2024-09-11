@@ -33,6 +33,30 @@ namespace cilia {
 		//       operator StringView() { return *(StringView*)(this); }
 
 
+		auto size() const -> Int {
+			return Int(std::string_view::size());
+		}
+
+		auto operator[](Int i) const -> ConstReference {
+			EnsureIndexIsWithinBounds(i);
+			return std::string_view::operator[](i);
+		}
+
+		/// Checks whether the given index is within bounds.
+		/// If not, it will terminate the program (or maybe throw an exception).
+		auto EnsureIndexIsWithinBounds(Int i) const {
+#if defined(EVEN_FASTER_BUT_UNSAFE_RELEASE_BUILD) || (_HAS_ITERATOR_DEBUGGING > 0) || defined(_GLIBCXX_DEBUG)
+			// Do not check bounds here, when
+			// - we are compiling as EvenFasterButUnsafeRelease  or
+			// - bounds checking is already enabled/done by MSVC ("iterator debugging") or GCC.
+#else
+			if (UInt(i) >= UInt(size()))
+				std::terminate();
+			//Or throw std::out_of_range("String index is out of bounds");
+#endif
+		}
+
+
 		auto findFirstOf(const StringView& str, Int pos = 0) const noexcept -> Int {
 			return Int(std::string_view::find_first_of(str, pos));
 		}
