@@ -18,5 +18,9 @@ e.g. `class cilia::String : public std::string { ... }`.
 	- `Array<Int> arr` instead of `vector<int> vec`,
 	- `FixedSizeArray<Int> arr` instead of `array<int> arr`.
 
-- Changing the type used for size() and indexing from unsigned `size_t` to signed `Int`.
+- Changing the type used for size() and index-based access (`operator[]`) from unsigned `size_t` to signed `Int`.
+
+- Checking the array bounds with index-based access,
+	- but only if not already checked by the compiler,
+ 	- and not in "UsafeRelease" builds.
 
