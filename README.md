@@ -24,3 +24,6 @@ e.g. `class cilia::String : public std::string { ... }`.
 	- but only if not already checked by the compiler,
  	- and not in "UsafeRelease" builds.
 
+- TODO Next
+	- Exception.hpp
+ 	- FixedSizeArray.hpp
