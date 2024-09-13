@@ -2,6 +2,7 @@
 #include "cilia/String2.hpp"
 #include "cilia/StringView.hpp"
 #include "cilia/Array.hpp"
+#include "cilia/FixedSizeArray.hpp"
 #include "cilia/Map.hpp"
 #include <iostream>
 
@@ -129,6 +130,12 @@ auto main() -> Int32 {
 
 	auto keyComparer   = map1.keyComp();
 	auto valueComparer = map1.valueComp();
+
+
+	FixedSizeArray<Int, 3> arr3;
+	FixedSizeArray<Int, 3> arr4 = { 0, 1, 2 };
+	std::array<Int, 3>     arr5 = { 0, 1, 2 };
+	FixedSizeArray<Int, 4> arr6 = toFixedSizeArray("Foo");
 
 
 	return 0;

@@ -47,5 +47,11 @@
     <ClInclude Include="cilia\Pair.hpp">
       <Filter>Header Files\cilia</Filter>
     </ClInclude>
+    <ClInclude Include="cilia\Exception.hpp">
+      <Filter>Header Files\cilia</Filter>
+    </ClInclude>
+    <ClInclude Include="cilia\FixedSizeArray.hpp">
+      <Filter>Header Files\cilia</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

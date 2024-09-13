@@ -155,6 +155,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cilia\BasicTypes.hpp" />
+    <ClInclude Include="cilia\Exception.hpp" />
+    <ClInclude Include="cilia\FixedSizeArray.hpp" />
     <ClInclude Include="cilia\Macros.h" />
     <ClInclude Include="cilia\Map.hpp" />
     <ClInclude Include="cilia\Pair.hpp" />
