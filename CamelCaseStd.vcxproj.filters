@@ -44,5 +44,8 @@
     <ClInclude Include="cilia\String2.hpp">
       <Filter>Header Files\cilia</Filter>
     </ClInclude>
+    <ClInclude Include="cilia\Pair.hpp">
+      <Filter>Header Files\cilia</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

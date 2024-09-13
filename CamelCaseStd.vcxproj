@@ -157,6 +157,7 @@
     <ClInclude Include="cilia\BasicTypes.hpp" />
     <ClInclude Include="cilia\Macros.h" />
     <ClInclude Include="cilia\Map.hpp" />
+    <ClInclude Include="cilia\Pair.hpp" />
     <ClInclude Include="cilia\String.hpp" />
     <ClInclude Include="cilia\String2.hpp" />
     <ClInclude Include="cilia\StringView.hpp" />
