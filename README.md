@@ -2,6 +2,8 @@
 CamelCase wrapper for the classes/types of the C++ standard library,  
 e.g. `class cilia::String : public std::string { ... }`.
 
+So roughly a variant of Qt with the standard library classes as base (but with exceptions, and with namespaces instead of the prefix "Q").
+
 - Replacing lowercase / snake_case type names with upper CamelCase:
 	- `Int` instead of `int`,
 	- `Int32` instead of `int32_t`,
