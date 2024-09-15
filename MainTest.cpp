@@ -135,7 +135,7 @@ auto main() -> Int32 {
 	FixedSizeArray<Int, 3> arr3;
 	FixedSizeArray<Int, 3> arr4 = { 0, 1, 2 };
 	std::array<Int, 3>     arr5 = { 0, 1, 2 };
-	FixedSizeArray<Int, 4> arr6 = toFixedSizeArray("Foo");
+	//FixedSizeArray<Int, 4> arr6 = toFixedSizeArray("Foo");
 
 
 	return 0;

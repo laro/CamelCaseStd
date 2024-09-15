@@ -29,6 +29,8 @@
 		4816A2DA2C86E2A000A52971 /* StringView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StringView.hpp; sourceTree = "<group>"; };
 		4816A2DD2C86E2AA00A52971 /* MainTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainTest.cpp; sourceTree = SOURCE_ROOT; };
 		4816A2DE2C86E2AA00A52971 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		483C981C2C9636A4008447F9 /* Exception.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Exception.hpp; sourceTree = "<group>"; };
+		483C981D2C9636A4008447F9 /* FixedSizeArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FixedSizeArray.hpp; sourceTree = "<group>"; };
 		48745EAE2C86E24300239F7E /* CamelCaseStd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CamelCaseStd; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B1C1462C8E16350051BCF5 /* Array.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Array.hpp; sourceTree = "<group>"; };
 		48B1C1472C8E16350051BCF5 /* Map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
@@ -58,6 +60,8 @@
 				48B1C1492C8F60300051BCF5 /* String2.hpp */,
 				4816A2DA2C86E2A000A52971 /* StringView.hpp */,
 				48B1C1472C8E16350051BCF5 /* Map.hpp */,
+				483C981C2C9636A4008447F9 /* Exception.hpp */,
+				483C981D2C9636A4008447F9 /* FixedSizeArray.hpp */,
 			);
 			path = cilia;
 			sourceTree = "<group>";
