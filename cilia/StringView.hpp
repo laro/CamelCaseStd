@@ -52,7 +52,7 @@ namespace cilia {
 #endif
         }
 
-auto operator[](Int i) const -> ConstReference {
+        auto operator[](Int i) const -> ConstReference {
 			EnsureIndexIsWithinBounds(i);
 			return std::string_view::operator[](i);
 		}

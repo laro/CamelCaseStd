@@ -35,7 +35,6 @@
 		48B1C1462C8E16350051BCF5 /* Array.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Array.hpp; sourceTree = "<group>"; };
 		48B1C1472C8E16350051BCF5 /* Map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
 		48B1C1482C8E42110051BCF5 /* Pair.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Pair.hpp; sourceTree = "<group>"; };
-		48B1C1492C8F60300051BCF5 /* String2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = String2.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +56,6 @@
 				4816A2D82C86E2A000A52971 /* Macros.h */,
 				48B1C1462C8E16350051BCF5 /* Array.hpp */,
 				4816A2D92C86E2A000A52971 /* String.hpp */,
-				48B1C1492C8F60300051BCF5 /* String2.hpp */,
 				4816A2DA2C86E2A000A52971 /* StringView.hpp */,
 				48B1C1472C8E16350051BCF5 /* Map.hpp */,
 				483C981C2C9636A4008447F9 /* Exception.hpp */,
