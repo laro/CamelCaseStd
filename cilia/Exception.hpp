@@ -1,5 +1,6 @@
 #pragma once
 #include <exception>
+#include <stdexcept> // std::runtime_error
 #include "cilia/BasicTypes.hpp"
 
 namespace cilia {
