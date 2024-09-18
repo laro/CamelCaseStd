@@ -54,7 +54,7 @@ namespace cilia {
 	};
 
 
-	//TODO std::remove_cv_t<T>
+	//TODO std::remove_cv_t<T> in CamelCase (or camelCase?)
 	template<typename T, size_t N>
 	constexpr FixedSizeArray<std::remove_cv_t<T>, N> toFixedSizeArray(T(&a)[N]) {
 		return std::array<std::remove_cv_t<T>, N>{a};

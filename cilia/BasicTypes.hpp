@@ -26,7 +26,7 @@ namespace cilia {
 
 	using Bool = bool;
 	using Byte = uint8_t;
-	using Char = unsigned char;
+	using Char = char;
 
 	using Float    = float;
 	//using Float16 = std::float16_t; // _Float16;

@@ -135,54 +135,66 @@ auto main() -> Int32 {
 	FixedSizeArray<Int, 3> arr3;
 	FixedSizeArray<Int, 3> arr4 = { 0, 1, 2 };
 	std::array<Int, 3>     arr5 = { 0, 1, 2 };
-	//FixedSizeArray<Int, 4> arr6 = toFixedSizeArray("Foo");
-    
-    
-    try {
-        throw Exception ("Test");
-    } catch (const Exception& ex) {
-        std::cout << "Exception " << ex.what() << std::endl;
-    } catch (const std::exception& ex) {
-        std::cout << "std::exception " << ex.what() << std::endl;
-    } catch (...) {
-        std::cout << "Unknown exception" << std::endl;
-    }
+	//TODO
+	//FixedSizeArray<Char, 4> arr6 = toFixedSizeArray("Foo");
 
-    try {
-        throw Exception1 ("Test");
-    } catch (const Exception2& ex) {
-        std::cout << "Exception2 " << ex.what() << std::endl;
-    } catch (...) {
-        std::cout << "Unknown exception" << std::endl;
-    }
 
-    try {
-        throw Exception2 ("Test");
-    } catch (const Exception1& ex) {
-        std::cout << "Exception1 " << ex.what() << std::endl;
-    } catch (...) {
-        std::cout << "Unknown exception" << std::endl;
-    }
+	try {
+		throw Exception("Test");
+	}
+	catch (const Exception& ex) {
+		std::cout << "Exception " << ex.what() << std::endl;
+	}
+	catch (const std::exception& ex) {
+		std::cout << "std::exception " << ex.what() << std::endl;
+	}
+	catch (...) {
+		std::cout << "Unknown exception" << std::endl;
+	}
 
-    try {
-        throw std::runtime_error ("Test");
-    } catch (const Exception& ex) {
-        std::cout << "Exception " << ex.what() << std::endl;
-//    } catch (const std::exception& ex) {
-//        std::cout << "std::exception " << ex.what() << std::endl;
-    } catch (...) {
-        std::cout << "Unknown exception" << std::endl;
-    }
+	try {
+		throw Exception1("Test");
+	}
+	catch (const Exception2& ex) {
+		std::cout << "Exception2 " << ex.what() << std::endl;
+	}
+	catch (...) {
+		std::cout << "Unknown exception" << std::endl;
+	}
 
-    try {
-        throw std::exception ();
-    } catch (const Exception& ex) {
-        std::cout << "Exception " << ex.what() << std::endl;
-//    } catch (const std::exception& ex) {
-//        std::cout << "std::exception " << ex.what() << std::endl;
-    } catch (...) {
-        std::cout << "Unknown exception" << std::endl;
-    }
+	try {
+		throw Exception2("Test");
+	}
+	catch (const Exception1& ex) {
+		std::cout << "Exception1 " << ex.what() << std::endl;
+	}
+	catch (...) {
+		std::cout << "Unknown exception" << std::endl;
+	}
+
+	try {
+		throw std::runtime_error("Test");
+	}
+	catch (const Exception& ex) {
+		std::cout << "Exception " << ex.what() << std::endl;
+		//} catch (const std::exception& ex) {
+		//	std::cout << "std::exception " << ex.what() << std::endl;
+	}
+	catch (...) {
+		std::cout << "Unknown exception" << std::endl;
+	}
+
+	try {
+		throw std::exception();
+	}
+	catch (const Exception& ex) {
+		std::cout << "Exception " << ex.what() << std::endl;
+	//} catch (const std::exception& ex) {
+	//	std::cout << "std::exception " << ex.what() << std::endl;
+	}
+	catch (...) {
+		std::cout << "Unknown exception" << std::endl;
+	}
 
 
 	return 0;
