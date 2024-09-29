@@ -36,11 +36,11 @@ So roughly a variant of Qt with the standard library classes as base (but with e
             }
         }
         ```
-    - Currently only possible if we can change the `std` base class and add an `operator cilia::String`
+    - Currently only possible if we can change the `std` base class and add an `operator cilia::String&`
         ```
         namespace std {
             class string {
-                operator String&() {
+                operator cilia::String&() {
                     return *reinterpret_cast<String*>(this);
                 }
             }
