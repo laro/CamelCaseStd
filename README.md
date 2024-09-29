@@ -28,7 +28,7 @@ So roughly a variant of Qt with the standard library classes as base (but with e
  
 - Problem:
     - Unable to cast a standard base class like `std::string` to its CamelCase counterpart `cilia::String` (without creating a copy).
-    - A plain casting constructor is not sufficient, as it create a copy instead of just using the `std::string`:
+    - A plain casting constructor is not sufficient, as it creates a copy instead of just using the `std::string`:
         ```
         namespace cilia {
             class String : std::string {
