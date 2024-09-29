@@ -51,27 +51,27 @@ So roughly a variant of Qt with the standard library classes as base (but with e
             - and it is practically impossible to do anyway (as we cannot change the standard library).
         - So we need one of these:
             - a global cast operator (from `std::string&` to `cilia::String&`)
-            ```
-            operator cilia::String& (std::string& str) {
-                return *reinterpret_cast<const String*>(&str);
-            }
-            ```
+                ```
+                operator cilia::String& (std::string& str) {
+                    return *reinterpret_cast<const String*>(&str);
+                }
+                ```
             - a externally defined cast operator
-            ```
-            std::string::operator cilia::String& () {
-                return *reinterpret_cast<const cilia::String*>(this);
-            }
-            ```
+                ```
+                std::string::operator cilia::String& () {
+                    return *reinterpret_cast<const cilia::String*>(this);
+                }
+                ```
             - a kind of no-op constructor
-            ```
-            namespace cilia {
-                class String : std::string {
-                    String&(std::string& str) {
-                        return *reinterpret_cast<String*>(&str);
+                ```
+                namespace cilia {
+                    class String : std::string {
+                        String&(std::string& str) {
+                            return *reinterpret_cast<String*>(&str);
+                        }
                     }
                 }
-            }
-            ```
+                ```
     
 
 - TODO Next
