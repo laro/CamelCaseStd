@@ -47,8 +47,8 @@ So roughly a variant of Qt with the standard library classes as base (but with e
         }
         ```
         - This is not desirable,
-            - we _want_ to keep the `std` files separate from the `cilia` files,
-            - and it is practically impossible to do anyway.
+            - we _want_ to keep the `std` files separate from the new `cilia` files,
+            - and it is practically impossible to do anyway (as we cannot change the standard library).
     - So we need one of these:
           - a global cast operator (from `std::string&` to `cilia::String&`)
             ```
