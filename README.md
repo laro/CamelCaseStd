@@ -28,16 +28,28 @@ So roughly a variant of Qt with the standard library classes as base (but with e
  
 - Problem:
     - Unable to cast a standard base class like `std::string` to its CamelCase counterpart `cilia::String` (without creating a copy).
-     - Only possible if we can change the std base class and add an `operator cilia::String`
+    - A plain casting constructor is not sufficient, as it create a copy instead of just using the `std::string`:
         ```
-        class std::string {
-            operator String&() {
-                return *reinterpret_cast<String*>(this);
+        namespace cilia {
+            class String : std::string {
+                String(std::string& str) : string(str) { }
             }
         }
         ```
-    - This is practically impossible to do and not desireable anyway (we want to keep the `std` files separate from the `cilia` files).
-     - So we need somethings like
+    - Only possible if we can change the `std` base class and add an `operator cilia::String`
+        ```
+        namespace std {
+            class string {
+                operator String&() {
+                    return *reinterpret_cast<String*>(this);
+                }
+            }
+        }
+        ```
+        - This is not desirable,
+            - we _want_ to keep the `std` files separate from the `cilia` files,
+            - and it is practically impossible to do anyway.
+    - So we need one of these:
           - a global cast operator (from `std::string&` to `cilia::String&`)
             ```
             operator cilia::String& (std::string& str) {
@@ -50,11 +62,13 @@ So roughly a variant of Qt with the standard library classes as base (but with e
                 return *reinterpret_cast<const cilia::String*>(this);
             }
             ```
-        - a kind of No-Op constructor
+        - a kind of no-op constructor
             ```
-            class cilia::String {
-                String&(std::string& str) {
-                    return *reinterpret_cast<String*>(this);
+            namespace cilia {
+                class String : std::string {
+                    String&(std::string& str) {
+                        return *reinterpret_cast<String*>(&str);
+                    }
                 }
             }
             ```
@@ -62,4 +76,4 @@ So roughly a variant of Qt with the standard library classes as base (but with e
 
 - TODO Next
     - Exception.hpp
-     - FixedSizeArray.hpp
+    - FixedSizeArray.hpp
