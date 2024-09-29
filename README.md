@@ -27,7 +27,7 @@ So roughly a variant of Qt with the standard library classes as base (but with e
  	- and not in "UsafeRelease" builds.
  
 - Problems:
-	- Unable to cast a standard base class like std::string to its CamelCase counterpart cilia::String.
+	- Unable to cast a standard base class like std::string to its CamelCase counterpart cilia::String (without creating a copy).
  	- Only possible if we can change the std base class and add an `operator cilia::String`
 		```
   		class std::string {
