@@ -46,8 +46,8 @@ So roughly a variant of Qt with the standard library classes as base (but with e
             ```
         - a externally defined cast operator
             ```
-            std::string::operator cilia::String& (std::string& str) {
-                return *reinterpret_cast<const cilia::String*>(&str);
+            std::string::operator cilia::String& () {
+                return *reinterpret_cast<const cilia::String*>(this);
             }
             ```
         - a kind of No-Op constructor
