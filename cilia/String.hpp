@@ -37,10 +37,6 @@ namespace cilia {
 		operator const String2& () const {
 			return *reinterpret_cast<const String2*>(this);
 		}
-		// And there is no way to define an external/global conversion operator like this:
-		//std::string::operator String& (std::string& str) {
-		//	return *reinterpret_cast<String*>(&str);
-		//}
 
 
 		auto size() const -> Int {
@@ -173,5 +169,16 @@ namespace cilia {
         //     We need to add this to the base class "String":
         //       operator String2() { return *reinterpret_cast<String2*>(this); }
     };
+
+    // // Not possible in C++26
+    // No globally< defined cast operator like this:
+    //    operator String (std::string& str) {
+    //        return *reinterpret_cast<const String*>(&str);
+    //    }
+    //
+    // And there is no way to define an external conversion operator like this:
+    //    std::string::operator String& (std::string& str) {
+    //        return *reinterpret_cast<String*>(&str);
+    //    }
 
 }
