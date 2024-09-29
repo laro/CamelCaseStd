@@ -56,7 +56,7 @@ So roughly a variant of Qt with the standard library classes as base (but with e
                     return *reinterpret_cast<const String*>(&str);
                 }
                 ```
-            - a externally defined cast operator
+            - an externally defined cast operator
                 ```
                 std::string::operator cilia::String& () {
                     return *reinterpret_cast<const cilia::String*>(this);
