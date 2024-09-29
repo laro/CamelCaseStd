@@ -24,17 +24,17 @@ So roughly a variant of Qt with the standard library classes as base (but with e
 
 - Checking the array bounds with index-based access,
     - but only if not already checked by the compiler,
-     - and not in "UsafeRelease" builds.
+        - and not in "UsafeRelease" builds.
  
 - Problem:
     - Unable to cast a standard base class like std::string to its CamelCase counterpart cilia::String (without creating a copy).
      - Only possible if we can change the std base class and add an `operator cilia::String`
         ```
-          class std::string {
+        class std::string {
             operator String&() {
                 return *reinterpret_cast<String*>(this);
             }
-          }
+        }
         ```
     - This is practically impossible to do and not desireable anyway (we want to keep the `std` files separate from the `cilia` files).
      - So we need somethings like
@@ -52,11 +52,11 @@ So roughly a variant of Qt with the standard library classes as base (but with e
             ```
         - a kind of No-Op constructor
             ```
-              class cilia::String {
+            class cilia::String {
                 String&(std::string& str) {
                     return *reinterpret_cast<String*>(this);
                 }
-              }
+            }
             ```
     
 
