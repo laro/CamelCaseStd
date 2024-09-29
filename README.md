@@ -25,6 +25,40 @@ So roughly a variant of Qt with the standard library classes as base (but with e
 - Checking the array bounds with index-based access,
 	- but only if not already checked by the compiler,
  	- and not in "UsafeRelease" builds.
+ 
+- Problems:
+	- Unable to cast a standard base class like std::string to its CamelCase counterpart cilia::String.
+ 	- Only possible if we can change the std base class and add an `operator cilia::String`
+		```
+  		class std::string {
+			operator String&() {
+				return *reinterpret_cast<String*>(this);
+			}
+  		}
+		```
+	- This is practically impossible to do and not desireable anyway (we want to keep the `std` files separate from the `cilia` files).
+ 	- So we need somethings like
+  		- a global cast operator (from `std::string&` to `cilia::String&`)
+			```
+			operator cilia::String& (std::string& str) {
+				return *reinterpret_cast<const String*>(&str);
+			}
+			```
+    	- a externally defined cast operator
+			```
+			std::string::operator cilia::String& (std::string& str) {
+				return *reinterpret_cast<const cilia::String*>(&str);
+			}
+			```
+		- a kind of No-Op constructor
+			```
+	  		class cilia::String {
+				String&(std::string& str) {
+					return *reinterpret_cast<String*>(this);
+				}
+	  		}
+			```
+    
 
 - TODO Next
 	- Exception.hpp
