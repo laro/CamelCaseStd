@@ -5,10 +5,8 @@ e.g. `class cilia::String : public std::string { ... }`.
 So roughly a variant of Qt with the standard library classes as base (but with exceptions, and with namespaces instead of the prefix "Q").
 
 - Replacing lowercase / snake_case type names with upper CamelCase:
-    - `Int` instead of `int`,
-    - `Int32` instead of `int32_t`,
-    - `String` instead of `string`,
-    - `ForwardList` instead of `forward_list`.
+    - `Int`, `Int32`, `String`, `ForwardList` ...
+        - instead of `int`, `int32_t`, `string`, `forward_list` ...
 
 - Replacing lowercase / snake_case function names with (lower) camelCase:  
   `str.popBack()` instead of `str.pop_back()`.
