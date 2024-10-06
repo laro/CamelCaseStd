@@ -31,6 +31,7 @@
 		4816A2DE2C86E2AA00A52971 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		483C981C2C9636A4008447F9 /* Exception.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Exception.hpp; sourceTree = "<group>"; };
 		483C981D2C9636A4008447F9 /* FixedSizeArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FixedSizeArray.hpp; sourceTree = "<group>"; };
+		4859A0642CB339EA0013CF86 /* Signal.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Signal.hpp; sourceTree = "<group>"; };
 		48745EAE2C86E24300239F7E /* CamelCaseStd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CamelCaseStd; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B1C1462C8E16350051BCF5 /* Array.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Array.hpp; sourceTree = "<group>"; };
 		48B1C1472C8E16350051BCF5 /* Map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		4816A2DC2C86E2A000A52971 /* cilia */ = {
 			isa = PBXGroup;
 			children = (
+				4859A0642CB339EA0013CF86 /* Signal.hpp */,
 				4816A2D72C86E2A000A52971 /* BasicTypes.hpp */,
 				48B1C1482C8E42110051BCF5 /* Pair.hpp */,
 				4816A2D82C86E2A000A52971 /* Macros.h */,
