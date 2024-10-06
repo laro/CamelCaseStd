@@ -75,3 +75,4 @@ So roughly a variant of Qt with the standard library classes as base (but with e
 - TODO Next
     - Exception.hpp
     - Signals and callbacks ("slots")
+        - std::function
