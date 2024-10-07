@@ -39,9 +39,15 @@ auto append(String2& str, char ch) {
 	str.pushBack(ch);
 }
 
+
 auto onTest(Int i, Float f, String s) {
     using namespace std;
     cout << "i = " << i << ", f = " << f << ", s = " << s << endl;
+}
+
+auto onTestReduced(Int i, Float f) {
+    using namespace std;
+    cout << "i = " << i << ", f = " << f << endl;
 }
 
 
@@ -206,6 +212,16 @@ auto main() -> Int32 {
     
     Signal<Int, Float, String> testSignal;
     testSignal.connect(&onTest);
+    //testSignal.disconnect(&onTest);
+
+    //TODO Would be nice to have:
+    //testSignal.connect(&onTestReduced);
+    
+    // This is Ok, but ...
+    testSignal.connect([](Int i, Float f, String s) { onTestReduced(i, f); });
+    // AFAIK impossible to remove again:
+    //testSignal.disconnect([](Int i, Float f, String s) { onTestReduced(i, f); });
+
     testSignal.emit(1, 3.1415, "Test Signal");
 
 	return 0;
