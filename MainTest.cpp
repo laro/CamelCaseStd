@@ -40,21 +40,33 @@ auto append(String2& str, char ch) {
 }
 
 
-auto onTest(Int i, Float f, String s) {
+auto onTest3Args(Int i, Float f, String s) {
     using namespace std;
     cout << "i = " << i << ", f = " << f << ", s = " << s << endl;
 }
 
-auto onTestReduced(Int i, Float f) {
+auto onTest2Args(Int i, Float f) {
     using namespace std;
     cout << "i = " << i << ", f = " << f << endl;
 }
 
+auto onTest1Arg(Int i) {
+    using namespace std;
+    cout << "i = " << i << endl;
+}
+
+auto onTest0Args() {
+    using namespace std;
+    cout << endl;
+}
+
 
 auto main() -> Int32 {
+    using namespace std;
+    
 	String       str      = "Test";
 	const String strConst = "TestConst";
-	std::string  strStd   = "TestStd";
+	string       strStd   = "TestStd";
 
 	printLine(str);
 	printLine(strStd);
@@ -99,7 +111,7 @@ auto main() -> Int32 {
 	Float flt1 = NaN;
 	Float flt2 = Infinity;
 	if (str.empty() == False) {
-		std::cout << "String is not empty" << std::endl;
+		cout << "String is not empty" << endl;
 	}
 
 
@@ -147,82 +159,76 @@ auto main() -> Int32 {
 
 	FixedSizeArray<Int, 3> arr3;
 	FixedSizeArray<Int, 3> arr4 = { 0, 1, 2 };
-	std::array<Int, 3>     arr5 = { 0, 1, 2 };
+	array<Int, 3>          arr5 = { 0, 1, 2 };
 	//TODO
 	//FixedSizeArray<Char, 4> arr6 = toFixedSizeArray("Foo");
 
 
 	try {
 		throw Exception("Test");
-	}
-	catch (const Exception& ex) {
-		std::cout << "Exception " << ex.what() << std::endl;
-	}
-	catch (const std::exception& ex) {
-		std::cout << "std::exception " << ex.what() << std::endl;
-	}
-	catch (...) {
-		std::cout << "Unknown exception" << std::endl;
+	} catch (const Exception& ex) {
+		cout << "Exception " << ex.what() << endl;
+	} catch (const exception& ex) {
+		cout << "exception " << ex.what() << endl;
+	} catch (...) {
+		cout << "Unknown exception" << endl;
 	}
 
 	try {
 		throw Exception1("Test");
-	}
-	catch (const Exception2& ex) {
-		std::cout << "Exception2 " << ex.what() << std::endl;
-	}
-	catch (...) {
-		std::cout << "Unknown exception" << std::endl;
+	} catch (const Exception2& ex) {
+		cout << "Exception2 " << ex.what() << endl;
+	} catch (...) {
+		cout << "Unknown exception" << endl;
 	}
 
 	try {
 		throw Exception2("Test");
-	}
-	catch (const Exception1& ex) {
-		std::cout << "Exception1 " << ex.what() << std::endl;
-	}
-	catch (...) {
-		std::cout << "Unknown exception" << std::endl;
+	} catch (const Exception1& ex) {
+		cout << "Exception1 " << ex.what() << endl;
+	} catch (...) {
+		cout << "Unknown exception" << endl;
 	}
 
 	try {
-		throw std::runtime_error("Test");
-	}
-	catch (const Exception& ex) {
-		std::cout << "Exception " << ex.what() << std::endl;
-		//} catch (const std::exception& ex) {
-		//	std::cout << "std::exception " << ex.what() << std::endl;
-	}
-	catch (...) {
-		std::cout << "Unknown exception" << std::endl;
+		throw runtime_error("Test");
+	} catch (const Exception& ex) {
+		cout << "Exception " << ex.what() << endl;
+		//} catch (const exception& ex) {
+		//	cout << "exception " << ex.what() << endl;
+	} catch (...) {
+		cout << "Unknown exception" << endl;
 	}
 
 	try {
-		throw std::exception();
-	}
-	catch (const Exception& ex) {
-		std::cout << "Exception " << ex.what() << std::endl;
-	//} catch (const std::exception& ex) {
-	//	std::cout << "std::exception " << ex.what() << std::endl;
-	}
-	catch (...) {
-		std::cout << "Unknown exception" << std::endl;
+		throw exception();
+	} catch (const Exception& ex) {
+		cout << "Exception " << ex.what() << endl;
+	//} catch (const exception& ex) {
+	//	cout << "exception " << ex.what() << endl;
+    } catch (const ExceptionBase& ex) {
+        cout << "ExceptionBase " << ex.what() << endl;
+	} catch (...) {
+		cout << "Unknown exception" << endl;
 	}
 
     
     Signal<Int, Float, String> testSignal;
-    testSignal.connect(&onTest);
-    //testSignal.disconnect(&onTest);
+    testSignal.connect(&onTest3Args);
+
+    // Nice to have:
+    testSignal.connect(&onTest2Args);
+    testSignal.connect(&onTest1Arg);
+    testSignal.connect(&onTest0Args);
 
     //TODO Would be nice to have:
-    //testSignal.connect(&onTestReduced);
-    
-    // This is Ok, but ...
-    testSignal.connect([](Int i, Float f, String s) { onTestReduced(i, f); });
-    // AFAIK impossible to remove again:
-    //testSignal.disconnect([](Int i, Float f, String s) { onTestReduced(i, f); });
+    //testSignal.disconnect(&onTest3Args);
+    //testSignal.disconnect(&onTest2Args);
+    //testSignal.disconnect(&onTest1Arg);
+    //testSignal.disconnect(&onTest0Args);
 
     testSignal.emit(1, 3.1415, "Test Signal");
 
+    
 	return 0;
 }
