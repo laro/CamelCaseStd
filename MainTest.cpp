@@ -4,6 +4,7 @@
 #include "cilia/FixedSizeArray.hpp"
 #include "cilia/Map.hpp"
 #include "cilia/Exception.hpp"
+#include "cilia/Signal.hpp"
 #include <iostream>
 
 using namespace cilia;
@@ -37,6 +38,12 @@ auto checkStringView(StringView str) {
 auto append(String2& str, char ch) {
 	str.pushBack(ch);
 }
+
+auto onTest(Int i, Float f, String s) {
+    using namespace std;
+    cout << "i = " << i << ", f = " << f << ", s = " << s << endl;
+}
+
 
 auto main() -> Int32 {
 	String       str      = "Test";
@@ -196,6 +203,10 @@ auto main() -> Int32 {
 		std::cout << "Unknown exception" << std::endl;
 	}
 
+    
+    Signal<Int, Float, String> testSignal;
+    testSignal.connect(&onTest);
+    testSignal.emit(1, 3.1415, "Test Signal");
 
 	return 0;
 }

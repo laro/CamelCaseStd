@@ -65,6 +65,12 @@ namespace cilia {
 			std::vector<T, Allocator>::assign_range(range);
 		}
 
+        auto append(const T& element) {
+            std::vector<T, Allocator>::push_back(element);
+        }
+        auto append(T&& element) {
+            std::vector<T, Allocator>::push_back(element);
+        }
 		template<typename R> //TODO Auf Ranges beschränken
 		constexpr void append(R&& range) {
 			std::vector<T, Allocator>::append_range(range);
