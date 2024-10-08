@@ -206,29 +206,29 @@ auto main() -> Int32 {
 		cout << "Exception " << ex.what() << endl;
 	//} catch (const exception& ex) {
 	//	cout << "exception " << ex.what() << endl;
-    } catch (const ExceptionBase& ex) {
-        cout << "ExceptionBase " << ex.what() << endl;
+	} catch (const ExceptionBase& ex) {
+		cout << "ExceptionBase " << ex.what() << endl;
 	} catch (...) {
 		cout << "Unknown exception" << endl;
 	}
 
-    
-    Signal<Int, Float, String> testSignal;
-    testSignal.connect(&onTest3Args);
 
-    // Nice to have:
-    testSignal.connect(&onTest2Args);
-    testSignal.connect(&onTest1Arg);
-    testSignal.connect(&onTest0Args);
+	Signal<Int, Float, String> testSignal;
+	testSignal.connect(&onTest3Args);
 
-    //TODO Would be nice to have:
-    //testSignal.disconnect(&onTest3Args);
-    //testSignal.disconnect(&onTest2Args);
-    //testSignal.disconnect(&onTest1Arg);
-    //testSignal.disconnect(&onTest0Args);
+	// Nice to have:
+	testSignal.connect(&onTest2Args);
+	testSignal.connect(&onTest1Arg);
+	testSignal.connect(&onTest0Args);
 
-    testSignal.emit(1, 3.1415, "Test Signal");
+	//TODO Would be nice to have:
+	//testSignal.disconnect(&onTest3Args);
+	//testSignal.disconnect(&onTest2Args);
+	//testSignal.disconnect(&onTest1Arg);
+	//testSignal.disconnect(&onTest0Args);
 
-    
+	testSignal.emit(1, 3.1415f, "Test Signal");
+
+
 	return 0;
 }

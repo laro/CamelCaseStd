@@ -50,5 +50,8 @@
     <ClInclude Include="cilia\FixedSizeArray.hpp">
       <Filter>Header Files\cilia</Filter>
     </ClInclude>
+    <ClInclude Include="cilia\Signal.hpp">
+      <Filter>Header Files\cilia</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

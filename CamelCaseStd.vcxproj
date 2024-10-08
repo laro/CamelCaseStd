@@ -160,6 +160,7 @@
     <ClInclude Include="cilia\Macros.h" />
     <ClInclude Include="cilia\Map.hpp" />
     <ClInclude Include="cilia\Pair.hpp" />
+    <ClInclude Include="cilia\Signal.hpp" />
     <ClInclude Include="cilia\String.hpp" />
     <ClInclude Include="cilia\StringView.hpp" />
     <ClInclude Include="cilia\Array.hpp" />
