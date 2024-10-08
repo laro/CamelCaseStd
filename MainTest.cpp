@@ -41,29 +41,29 @@ auto append(String2& str, char ch) {
 
 
 auto onTest3Args(Int i, Float f, String s) {
-    using namespace std;
-    cout << "i = " << i << ", f = " << f << ", s = " << s << endl;
+	using namespace std;
+	cout << "i = " << i << ", f = " << f << ", s = " << s << endl;
 }
 
 auto onTest2Args(Int i, Float f) {
-    using namespace std;
-    cout << "i = " << i << ", f = " << f << endl;
+	using namespace std;
+	cout << "i = " << i << ", f = " << f << endl;
 }
 
 auto onTest1Arg(Int i) {
-    using namespace std;
-    cout << "i = " << i << endl;
+	using namespace std;
+	cout << "i = " << i << endl;
 }
 
 auto onTest0Args() {
-    using namespace std;
-    cout << endl;
+	using namespace std;
+	cout << endl;
 }
 
 
 auto main() -> Int32 {
-    using namespace std;
-    
+	using namespace std;
+
 	String       str      = "Test";
 	const String strConst = "TestConst";
 	string       strStd   = "TestStd";
