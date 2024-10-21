@@ -48,12 +48,6 @@ So roughly a variant of Qt with the standard library classes as base (but with e
             - we _want_ to keep the `std` files separate from the new `cilia` files,
             - and it is practically impossible to do anyway (as we cannot change the standard library).
     - So we need one of these:
-        - a global cast operator (from `std::string&` to `cilia::String&`)
-            ```
-            operator cilia::String&(std::string& str) {
-                return *reinterpret_cast<String*>(&str);
-            }
-            ```
         - a kind of no-op constructor
             ```
             namespace cilia {
@@ -62,6 +56,12 @@ So roughly a variant of Qt with the standard library classes as base (but with e
                         return *reinterpret_cast<String*>(&str);
                     }
                 }
+            }
+            ```
+        - a global cast operator (from `std::string&` to `cilia::String&`)
+            ```
+            operator cilia::String&(std::string& str) {
+                return *reinterpret_cast<String*>(&str);
             }
             ```
         - an externally defined cast operator
