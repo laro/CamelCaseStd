@@ -175,7 +175,7 @@ namespace cilia {
 	};
 
 	// // Not possible in C++26
-	// No globally< defined cast operator like this:
+	// No globally defined cast operator like this:
 	//	operator String (std::string& str) {
 	//		return *reinterpret_cast<const String*>(&str);
 	//	}
