@@ -21,12 +21,16 @@ namespace cilia {
 		using ConstReverseIterator = std::string::const_reverse_iterator;
 
 		// Take over all constructors
+		// (this seems to create "String(const String& str)", but not "String(const std::string& str)").
 		using std::string::string;
 
 		// Allow functions with a String parameter to also take std::string.
 		// This, unfortunately, is creating a copy.
 		String(const std::string& str) : std::string(str) { }
 		String(std::string&& str) : std::string(str) { }
+		// How about a no-op (non-copying) converting constructor?
+		//String&(std::string&) { }
+		//const String&(const std::string&) { }
 
 		// NoOp casting from String to String2
 		// Unfortunately we need to define it here, in String. AFAIK it is not possible to define it in String2.
