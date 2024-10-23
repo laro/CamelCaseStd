@@ -44,21 +44,21 @@ namespace cilia {
 		}
 
 
-        /// Checks whether the given index is within bounds.
-        /// If not, it will terminate the program (or maybe throw an exception).
-        auto EnsureIndexIsWithinBounds(Int i) const {
+		/// Checks whether the given index is within bounds.
+		/// If not, it will terminate the program (or maybe throw an exception).
+		auto EnsureIndexIsWithinBounds(Int i) const {
 #if defined(EVEN_FASTER_BUT_UNSAFE_RELEASE_BUILD) || (_HAS_ITERATOR_DEBUGGING > 0) || defined(_GLIBCXX_DEBUG)
-            // Do not check bounds here, when
-            // - we are compiling as EvenFasterButUnsafeRelease  or
-            // - bounds checking is already enabled/done by MSVC ("iterator debugging") or GCC.
+			// Do not check bounds here, when
+			// - we are compiling as EvenFasterButUnsafeRelease  or
+			// - bounds checking is already enabled/done by MSVC ("iterator debugging") or GCC.
 #else
-            if (UInt(i) >= UInt(size()))
-                std::terminate();
-                //Or throw std::out_of_range("String index is out of bounds");
+			if (UInt(i) >= UInt(size()))
+				std::terminate();
+				//Or throw std::out_of_range("String index is out of bounds");
 #endif
-        }
+		}
 
-        auto operator[](Int i) -> Reference {
+		auto operator[](Int i) -> Reference {
 			EnsureIndexIsWithinBounds(i);
 			return std::string::operator[](i);
 		}
@@ -157,28 +157,28 @@ namespace cilia {
 		using std::string::npos;
 	};
 
-    // String2 is just a test for how to implement NoOp conversion from base to
-    // child class.
-    class String2 : public String {
-    public:
-        // Take over all constructors
-        using String::String;
+	// String2 is just a test for how to implement NoOp conversion from base to
+	// child class.
+	class String2 : public String {
+	public:
+		// Take over all constructors
+		using String::String;
 
-        // Allow functions with a String2 parameter to also take String.
-        //TODO Unfortunately there is no way to define an external conversion operator.
-        //     We need to add this to the base class "String":
-        //       operator String2() { return *reinterpret_cast<String2*>(this); }
-    };
+		// Allow functions with a String2 parameter to also take String.
+		//TODO Unfortunately there is no way to define an external conversion operator.
+		//     We need to add this to the base class "String":
+		//       operator String2() { return *reinterpret_cast<String2*>(this); }
+	};
 
-    // // Not possible in C++26
-    // No globally< defined cast operator like this:
-    //    operator String (std::string& str) {
-    //        return *reinterpret_cast<const String*>(&str);
-    //    }
-    //
-    // And there is no way to define an external conversion operator like this:
-    //    std::string::operator String& (std::string& str) {
-    //        return *reinterpret_cast<String*>(&str);
-    //    }
+	// // Not possible in C++26
+	// No globally< defined cast operator like this:
+	//	operator String (std::string& str) {
+	//		return *reinterpret_cast<const String*>(&str);
+	//	}
+	//
+	// And there is no way to define an external conversion operator like this:
+	//	std::string::operator String& (std::string& str) {
+	//		return *reinterpret_cast<String*>(&str);
+	//	}
 
 }
