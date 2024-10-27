@@ -53,7 +53,9 @@ So roughly a variant of Qt with the standard library classes as base (but with e
             namespace cilia {
                 class String : std::string {
                     String&(std::string& str) {
-                        return *reinterpret_cast<String*>(&str);
+                        // A constructor does not have a return value, but
+                        // under the hood this is done:
+                        //return *reinterpret_cast<String*>(&str);
                     }
                 }
             }
