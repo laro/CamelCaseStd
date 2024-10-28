@@ -77,7 +77,9 @@ So roughly a variant of Qt with the standard library classes as base (but with e
 
 - TODO Next
     - Exception.hpp
+    - [Wikipedia.org/Standard Headers](https://en.wikipedia.org/wiki/C%2B%2B_Standard_Library#Standard_headers)
     - Signals and callbacks ("slots")
         - std::function
         - [LibSigC++](https://libsigcplusplus.github.io/libsigcplusplus/manual/html/chapter-introduction.html)
-    - [A pretty big list of C++ GUI libraries](https://www.reddit.com/r/cpp/comments/babfl5/a_pretty_big_list_of_c_gui_libraries/)
+    - GUI
+        - [A pretty big list of C++ GUI libraries](https://www.reddit.com/r/cpp/comments/babfl5/a_pretty_big_list_of_c_gui_libraries/)
