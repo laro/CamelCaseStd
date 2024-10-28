@@ -79,3 +79,4 @@ So roughly a variant of Qt with the standard library classes as base (but with e
     - Exception.hpp
     - Signals and callbacks ("slots")
         - std::function
+        - [LibSigC++](https://libsigcplusplus.github.io/libsigcplusplus/manual/html/chapter-introduction.html)
