@@ -17,20 +17,21 @@ namespace cilia {
 		using ReverseIterator      = std::string_view::reverse_iterator;
 		using ConstReverseIterator = std::string_view::const_reverse_iterator;
 
+
 		// Take over all constructors
 		using std::string_view::string_view;
 
-		// Allow functions with a StringView parameter to also take std::string_view.
-		//TODO Unclear, why I have to add a constructor for String.
-		//     Didn't have string_view a "ctach all" constructor for nearly everything?
-		StringView(const String& str) : std::string_view(str) { }
-		StringView(String&& str) : std::string_view(str) { }
+		// Allow functions with a String parameter to also take std::string.
 		//TODO This should be a NoOp conversion, but currently it probably is creating a copy.
-		StringView(const std::string_view& str) : std::string_view(str) { }
-		StringView(std::string_view&& str) : std::string_view(str) { }
-		//TODO Unfortunately there is no way to define an external conversion operator.
-		//     We would need to add this to std::string_view (which is not possible):
-		//       operator StringView() { return *(StringView*)(this); }
+		StringView(const std::string_view&) noexcept { }
+		
+		// This is the move constructor.
+		StringView(std::string_view&& str) : std::string_view(std::move(str)) { }
+
+		// Allow functions with a StringView parameter to also take String.
+		//TODO Unclear, why I have to add a constructor for String.
+		//     Didn't have string_view a "catch all" constructor for nearly everything?
+		StringView(const String& str) : std::string_view(str) { }
 
 
 		auto size() const -> Int {
@@ -38,21 +39,21 @@ namespace cilia {
 		}
 
 
-        /// Checks whether the given index is within bounds.
-        /// If not, it will terminate the program (or maybe throw an exception).
-        auto EnsureIndexIsWithinBounds(Int i) const {
-        #if defined(EVEN_FASTER_BUT_UNSAFE_RELEASE_BUILD) || (_HAS_ITERATOR_DEBUGGING > 0) || defined(_GLIBCXX_DEBUG)
-            // Do not check bounds here, when
-            // - we are compiling as EvenFasterButUnsafeRelease  or
-            // - bounds checking is already enabled/done by MSVC ("iterator debugging") or GCC.
-        #else
-            if (UInt(i) >= UInt(size()))
-                std::terminate();
-            //Or throw std::out_of_range("String index is out of bounds");
-        #endif
-        }
+		/// Checks whether the given index is within bounds.
+		/// If not, it will terminate the program (or maybe throw an exception).
+		auto EnsureIndexIsWithinBounds(Int i) const {
+		#if defined(EVEN_FASTER_BUT_UNSAFE_RELEASE_BUILD) || (_HAS_ITERATOR_DEBUGGING > 0) || defined(_GLIBCXX_DEBUG)
+			// Do not check bounds here, when
+			// - we are compiling as EvenFasterButUnsafeRelease  or
+			// - bounds checking is already enabled/done by MSVC ("iterator debugging") or GCC.
+		#else
+			if (UInt(i) >= UInt(size()))
+				std::terminate();
+			//Or throw std::out_of_range("String index is out of bounds");
+		#endif
+		}
 
-        auto operator[](Int i) const -> ConstReference {
+		auto operator[](Int i) const -> ConstReference {
 			EnsureIndexIsWithinBounds(i);
 			return std::string_view::operator[](i);
 		}

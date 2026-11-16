@@ -20,13 +20,16 @@ namespace cilia {
 		using ReverseIterator      = std::vector<T, Allocator>::reverse_iterator;
 		using ConstReverseIterator = std::vector<T, Allocator>::const_reverse_iterator;
 
+
 		// Take over all constructors
 		using std::vector<T, Allocator>::vector;
 
 		// Allow functions with an Array parameter to also take std::vector.
 		//TODO This should be a NoOp conversion, but currently it probably is creating a copy.
 		Array(const std::vector<T, Allocator>& vec) : std::vector<T, Allocator>(vec) { }
-		Array(std::vector<T, Allocator>&& vec) : std::vector<T, Allocator>(vec) { }
+		// This is the move constructor.
+		Array(std::vector<T, Allocator>&& vec) : std::vector<T, Allocator>(std::move(vec)) { }
+
 
 		auto pushBack(const T& element) {
 			std::vector<T, Allocator>::push_back(element);
@@ -65,12 +68,12 @@ namespace cilia {
 			std::vector<T, Allocator>::assign_range(range);
 		}
 
-        auto append(const T& element) {
-            std::vector<T, Allocator>::push_back(element);
-        }
-        auto append(T&& element) {
-            std::vector<T, Allocator>::push_back(element);
-        }
+		auto append(const T& element) {
+			std::vector<T, Allocator>::push_back(element);
+		}
+		auto append(T&& element) {
+			std::vector<T, Allocator>::push_back(element);
+		}
 		template<typename R> //TODO Restrict to ranges
 		constexpr void append(R&& range) {
 			std::vector<T, Allocator>::append_range(range);

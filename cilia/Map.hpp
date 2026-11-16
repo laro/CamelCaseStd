@@ -37,9 +37,12 @@ namespace cilia {
 
 		// Allow functions with a Map parameter to also take std::map.
 		//TODO This should be a NoOp conversion, but currently it probably is creating a copy.
-		Map(const std::map<Key, T, Compare, Allocator>& vec) : std::map<Key, T, Compare, Allocator>(vec) { }
-		Map(std::map<Key, T, Compare, Allocator>&& vec) : std::map<Key, T, Compare, Allocator>(vec) { }
+		Map(const std::map<Key, T, Compare, Allocator>& map) noexcept { }
+		
+		// This is the move constructor.
+		Map(std::map<Key, T, Compare, Allocator>&& map) : std::map<Key, T, Compare, Allocator>(std::move(map)) { }
 
+		
 		using std::map<Key, T, Compare, Allocator>::insert;
 		template<typename R> //TODO Auf Ranges beschränken
 		constexpr auto insert(R&& range) {
@@ -170,7 +173,7 @@ namespace cilia {
 		using std::map<Key, T, Compare, Allocator>::get_allocator;
 		using std::map<Key, T, Compare, Allocator>::emplace_hint;
 		using std::map<Key, T, Compare, Allocator>::try_emplace;
-        using std::map<Key, T, Compare, Allocator>::equal_range;
+		using std::map<Key, T, Compare, Allocator>::equal_range;
 		using std::map<Key, T, Compare, Allocator>::lower_bound;
 		using std::map<Key, T, Compare, Allocator>::upper_bound;
 		using std::map<Key, T, Compare, Allocator>::key_comp;

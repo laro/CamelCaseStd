@@ -1,6 +1,7 @@
 #pragma once
 #include <array>
 #include <exception> // terminate()
+#include <initializer_list>
 #include "cilia/BasicTypes.hpp"
 
 namespace cilia {
@@ -19,13 +20,19 @@ namespace cilia {
 		using ReverseIterator      = std::array<T, N>::reverse_iterator;
 		using ConstReverseIterator = std::array<T, N>::const_reverse_iterator;
 
+
 		//// Take over all constructors
 		//using std::array<T, N>::array;
-
-		//// Allow functions with an FixedSizeArray parameter to also take std::array.
-		////TODO This should be a NoOp conversion, but currently it probably is creating a copy.
-		//FixedSizeArray(const std::array<T, N>& vec) : std::array<T, N>(vec) { }
-		//FixedSizeArray(std::array<T, N>&& vec) : std::array<T, N>(vec) { }
+		//
+		//// Allow functions with a FixedSizeArray parameter to also take std::array.
+		//// This is a no-op converting constructor.
+		//FixedSizeArray(const std::array<T, N>&) noexcept { }
+		//
+		//// This is the move constructor.
+		//FixedSizeArray(std::array<T, N>&& arr) : std::array<T, N>(std::move(arr)) { }
+		//
+		//// Member initializer
+		//FixedSizeArray(std::initializer_list<T> initializerList) : std::array<T, N>(initializerList) { }
 
 
 		auto operator [](Int i) -> Reference {
